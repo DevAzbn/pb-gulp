@@ -27,6 +27,7 @@
     "gulp-rigger": "*",
     "gulp-uglify": "*",
     "gulp-watch": "*",
-	"gulp-watch-less": "*"
+	"gulp-watch-less": "*",
+	"gulp-pagebuilder": "*"
   }
 }
