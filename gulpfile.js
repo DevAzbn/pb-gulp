@@ -13,41 +13,63 @@ var gulp = require('gulp'),
 	watch = require('gulp-watch');						// наблюдение за изменением файловой системы
 
 
-var params = {
-	build : 'site',
-	src : 'site/html',
+var root = 'site',
+	src = root + '/' + 'src';
+
+var path = {
+	build : {
+		root : root,
+		html : root,
+		css : root + '/css',
+		js : root + '/js',
+		img : root + '/img',
+	},
+	src : {
+		root : src,
+		html : src + '/html',
+		css : src + '/css',
+		js : src + '/js',
+		img : src + '/img',
+	},
+	block : {
+		root : root + '/block',
+	}
 };
+
+/*
 params.pages = [
 	'index.html',
 ];
+*/
 
 gulp.task('default', ['server', 'build' ]);
 
 gulp.task('server', function(){
 	browserSync.init({
-		server : params.build,
+		server : path.build.root,
 	});
 	
-	gulp.watch('*.html', ['html']);
-	gulp.watch('*.less', ['less']);
+	gulp.watch(path.src.html + '/*.html', ['build:html']);
+	gulp.watch(path.block.root + '/**/*.less', ['build:less']);
 });
 
-gulp.task('build', ['html', 'less', ]);
+gulp.task('build', ['build:html', 'build:less', ]);
 
-gulp.task('html', function(){
-	params.pages.forEach(function(item){
-		gulp.src(params.src + '/' + item)
-			.pipe(rename(item))
-			.pipe(gulp.dest(params.build))
+gulp.task('build:html', function(){
+	//params.pages.forEach(function(item){
+		gulp.src(path.src.html + '/*.html')
+			.pipe(rigger())
+			//.pipe(rename(item))
+			.pipe(gulp.dest(path.build.html))
 			.pipe(reload({stream : true,}))
 		;
-	});
+	//});
 });
 
-gulp.task('less', function(){
-	gulp.src([params.build + '/block/**/*.less', ])
+gulp.task('build:less', function(){
+	gulp.src(path.block.root + '/**/*.less')
 		.pipe(concat('gulp-import.less'))
-		.pipe(gulp.dest(params.build + '/css/site'))
-		//.pipe(reload({stream : true,}))
+		.pipe(gulp.dest(path.build.css + '/site'))
+		.pipe(reload({stream : true,}))
 	;
 });
