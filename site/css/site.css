@@ -424,7 +424,8 @@ section {
   text-decoration: none;
   outline: 1px #000000 solid;
   padding: 0.5em;
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
 }
 .fecss .btn:hover {
   color: #ffffff;
@@ -546,8 +547,8 @@ section {
   top: 0;
   background-position: center center;
   background-repeat: no-repeat;
-  transition: -webkit-transform 1s ease;
-  transition: transform 1s ease;
+  -webkit-transition: -webkit-transform 1s ease;
+          transition: transform 1s ease;
 }
 .fecss .arrow-slider.mod.without-points .arrow-block .point-line {
   display: none;
@@ -788,15 +789,19 @@ section {
   /* http://css.yoksel.ru/flexbox/ */
 }
 .fecss .grid.flex .grid-row {
+  display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
+  -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -805,11 +810,15 @@ section {
           align-content: stretch;
 }
 .fecss .grid.flex .grid-row.inline {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
 }
 .fecss .grid.flex .grid-row.inclmn {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
@@ -820,21 +829,25 @@ section {
           flex-wrap: nowrap;
 }
 .fecss .grid.flex .grid-row.to-left {
+  -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
 .fecss .grid.flex .grid-row.to-right {
+  -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
 .fecss .grid.flex .grid-row.to-center {
+  -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 .fecss .grid.flex .grid-row.space-between {
+  -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1020,8 +1033,8 @@ html body .fecss .full-height {
   top: 0;
 }
 .fecss .hover-scale {
-  transition: -webkit-transform 1s ease;
-  transition: transform 1s ease;
+  -webkit-transition: -webkit-transform 1s ease;
+          transition: transform 1s ease;
 }
 .fecss .hover-scale:hover {
   display: inline-block;
@@ -1080,7 +1093,8 @@ html body .fecss .full-height {
   color: #ffffff;
 }
 .fecss .full-screen.page-loader {
-  transition: all 0.7s ease;
+  -webkit-transition: all 0.7s ease;
+          transition: all 0.7s ease;
   opacity: 0;
   height: 0%;
 }
@@ -1130,7 +1144,8 @@ html body .fecss .full-height {
   text-transform: uppercase;
   background-color: #999999;
   color: rgba(0, 0, 0, 0.75);
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
 }
 .fecss .full-screen.page-loader .close-loader:hover {
   background-color: #ffffff;
@@ -1191,7 +1206,8 @@ html body .fecss .full-height {
   background-repeat: no-repeat;
   background-image: url('../img/fecss/go-to-top.png');
   text-decoration: none;
-  transition: all 0.999s ease;
+  -webkit-transition: all 0.999s ease;
+          transition: all 0.999s ease;
 }
 .fecss .go-to-top.active {
   width: 65px;
@@ -1279,6 +1295,7 @@ body {
 body {
   font-size: 10px;
 }
+/*gulp-block*/
 @-webkit-keyframes processloading {
   0% {
     width: 0%;
