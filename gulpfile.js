@@ -58,7 +58,7 @@ gulp.task('server', function(){
 
 
 gulp.task('dev:html', function(){
-	gulp.src(path.src.html + '/**/*.html')
+	return gulp.src(path.src.html + '/**/*.html')
 		//.pipe(rigger())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(gulp.dest(path.build.html))
@@ -67,7 +67,7 @@ gulp.task('dev:html', function(){
 });
 
 gulp.task('dev:js', function(){
-	gulp.src(path.src.js + '/**/*.js')
+	return gulp.src(path.src.js + '/**/*.js')
 		//.pipe(rigger())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(gulp.dest(path.build.js))
@@ -76,7 +76,7 @@ gulp.task('dev:js', function(){
 });
 
 gulp.task('dev:css', function(){
-	gulp.src(path.build.css + '/site.less')
+	return gulp.src(path.build.css + '/site.less')
 		.pipe(less())
 		.pipe(autoprefixer({
 			browsers: ['> 2% in RU', 'last 4 version', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],	//last 2 versions '> 0%'
@@ -90,7 +90,7 @@ gulp.task('dev:css', function(){
 
 
 gulp.task('production:html', function(){
-	gulp.src(path.src.html + '/**/*.html')
+	return gulp.src(path.src.html + '/**/*.html')
 		//.pipe(rigger())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(gulp.dest(path.build.html))
@@ -98,7 +98,7 @@ gulp.task('production:html', function(){
 });
 
 gulp.task('production:js', function(){
-	gulp.src(path.src.js + '/**/*.js')
+	return gulp.src(path.src.js + '/**/*.js')
 		//.pipe(rigger())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(uglify())
@@ -107,7 +107,7 @@ gulp.task('production:js', function(){
 });
 
 gulp.task('production:css', function(){
-	gulp.src(path.build.css + '/site.less')
+	return gulp.src(path.build.css + '/site.less')
 		.pipe(less())
 		.pipe(autoprefixer({
 			browsers: ['> 2% in RU', 'last 4 version', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],	//last 2 versions '> 0%'
