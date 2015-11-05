@@ -9,19 +9,11 @@
 			&.contain {
 				background-position:50% 50%;
 				background-repeat:no-repeat;
-				-ms-background-size:contain;
-				-moz-background-size:contain;
-				-o-background-size:contain;
-				-webkit-background-size:contain;
 				background-size:contain;
 			}
 			&.cover {
 				background-position:50% 50%;
 				background-repeat:no-repeat;
-				-ms-background-size:cover;
-				-moz-background-size:cover;
-				-o-background-size:cover;
-				-webkit-background-size:cover;
 				background-size:cover;
 			}
 		}
@@ -36,10 +28,6 @@
 		}
 		
 		&.flip {
-			-ms-transform: scaleX(-1);
-			-moz-transform: scaleX(-1);
-			-o-transform: scaleX(-1);
-			-webkit-transform: scaleX(-1);
 			transform: scaleX(-1);
 			filter: FlipH;
 			-ms-filter: "FlipH";
@@ -189,18 +177,10 @@
 	
 	/* ------- Увеличение при наведении ------- */
 	.hover-scale {
-		-ms-transition:-ms-transform 1s ease;
-		-moz-transition:-moz-transform 1s ease;
-		-o-transition:-o-transform 1s ease;
-		-webkit-transition:-webkit-transform 1s ease;
 		transition:transform 1s ease;
 		
 		&:hover {
 			display:inline-block;
-			-ms-transform:scale(1.2);
-			-moz-transform:scale(1.2);
-			-o-transform:scale(1.2);
-			-webkit-transform:scale(1.2);
 			transform:scale(1.2);
 		}
 	}
@@ -277,11 +257,6 @@
 		}
 		
 		&.page-loader {
-			
-			-moz-transition: all 0.7s ease;
-			-ms-transition: all 0.7s ease;
-			-webkit-transition: all 0.7s ease;
-			-o-transition: all 0.7s ease;
 			transition: all 0.7s ease;
 			
 			opacity:0;
@@ -320,11 +295,6 @@
 					#site > .underline(none);
 					
 					#site > .bg(@dark-el-color-font);
-					
-					-ms-animation: processloading 1s infinite;
-					-moz-animation: processloading 1s infinite;
-					-webkit-animation: processloading 1s infinite;
-					-o-animation: processloading 1s infinite;
 					animation: processloading 1s infinite;
 				}
 				
@@ -343,10 +313,6 @@
 				#site > .bg(@dark-el-color-font * 0.6);
 				#site > .color(@dark-el-color-bg);
 				
-				-moz-transition: all 0.4s ease;
-				-ms-transition: all 0.4s ease;
-				-webkit-transition: all 0.4s ease;
-				-o-transition: all 0.4s ease;
 				transition: all 0.4s ease;
 				
 				&:hover {
@@ -387,28 +353,16 @@
 	&.filter, .filter {
 		
 		&.blur {
-			-ms-filter: blur(8px);
-			-moz-filter: blur(8px);
-			-o-filter: blur(8px);
-			-webkit-filter: blur(8px);
 			filter: blur(8px);
 			filter: url('@{url-path-css}/fecss/svg-filters.svg#blur');
 		}
 		
 		&.grayscale {
-			-ms-filter: grayscale(100%); 
-			-moz-filter: grayscale(100%); 
-			-o-filter: grayscale(100%); 
-			-webkit-filter: grayscale(100%); 
 			filter: grayscale(100%); 
 			filter: url('@{url-path-css}/fecss/svg-filters.svg#grayscale');
 		}
 		
 		&.not-filter {
-			-ms-filter: initial;
-			-moz-filter: initial;
-			-o-filter: initial;
-			-webkit-filter: initial;
 			filter: initial;
 		}
 	}
@@ -428,10 +382,6 @@
 		background-image:url('@{url-path-img}/fecss/go-to-top.png');
 		text-decoration:none;
 		
-		-ms-transition:all 0.999s ease;
-		-moz-transition:all 0.999s ease;
-		-o-transition:all 0.999s ease;
-		-webkit-transition:all 0.999s ease;
 		transition:all 0.999s ease;
 		
 		&.active {
@@ -442,10 +392,6 @@
 			z-index:15;
 			
 			&:hover {
-				-ms-transform:scale(1.3);
-				-moz-transform:scale(1.3);
-				-o-transform:scale(1.3);
-				-webkit-transform:scale(1.3);
 				transform:scale(1.3);
 			}
 		}
@@ -478,10 +424,6 @@
 		left: 0;
 		width: 100%;
 		height: 10px;
-		-ms-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
-		-moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
-		-o-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
-		-webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
 		box-shadow: 0px 0px 10px rgba(0,0,0,.8);
 		z-index: 100;
 	}

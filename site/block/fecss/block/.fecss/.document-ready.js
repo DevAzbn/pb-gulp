@@ -12,7 +12,7 @@
 			if (userAgent.indexOf('opera') != -1) res = 'opera';
 			if (userAgent.indexOf('yabrowser') != -1) res = 'yabrowser';
 			
-			$('body').eq(0).addClass(res);
+			$('body.fecss').eq(0).addClass(res);
 		}
 	);
 	
