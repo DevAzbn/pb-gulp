@@ -24,7 +24,6 @@
     "gulp-less": "*",
     "gulp-minify-css": "*",
     "gulp-rename": "*",
-    "gulp-rigger": "*",
     "gulp-uglify": "*",
     "gulp-watch": "*",
 	"gulp-watch-less": "*",
