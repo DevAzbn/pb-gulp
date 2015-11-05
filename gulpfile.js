@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 	watch = require('gulp-watch'),						// наблюдение за изменением файловой системы
 	pagebuilder = require('gulp-pagebuilder');			// умный инклуд html с поддержкой вложенности и передачей параметров
 
-var root = 'site',
+var root = 'rybka',//'site',
 	src = root + '/' + 'src';
 
 var path = {
