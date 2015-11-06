@@ -20,13 +20,15 @@
     "browser-sync": "*",
     "gulp": "*",
     "gulp-autoprefixer": "*",
+    "gulp-cache": "*",
     "gulp-concat": "*",
+    "gulp-imagemin": "*",
     "gulp-less": "*",
     "gulp-minify-css": "*",
+    "gulp-pagebuilder": "*",
     "gulp-rename": "*",
     "gulp-uglify": "*",
     "gulp-watch": "*",
-	"gulp-watch-less": "*",
-	"gulp-pagebuilder": "*"
+    "gulp-watch-less": "*",
   }
 }

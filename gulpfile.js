@@ -9,9 +9,10 @@ var gulp = require('gulp'),
 	minifyCss = require('gulp-minify-css'),				// минификация css
 	//myth = require('gulp-myth'),						// префиксы для css - по умолчанию не установлен
 	rename = require('gulp-rename'),					// переименование файлов
-	//rigger = require('gulp-rigger'),					// инклуд html
 	uglify = require('gulp-uglify'),					// сжатие js
 	watch = require('gulp-watch'),						// наблюдение за изменением файловой системы
+	imagemin = require('gulp-imagemin'),				// сжатие изображений
+	cache = require('gulp-cache'),						// кеширование
 	pagebuilder = require('gulp-pagebuilder');			// умный инклуд html с поддержкой вложенности и передачей параметров
 
 var root = 'rybka',//'site',
@@ -39,7 +40,7 @@ var path = {
 
 
 gulp.task('default', ['server', 'dev' ]);
-gulp.task('dev', ['dev:html', 'dev:js', 'dev:css' ]);
+gulp.task('dev', ['dev:html', 'dev:js', 'dev:css', 'dev:img' ]);
 gulp.task('production', ['production:html', 'production:js', 'production:css' ]);
 
 gulp.task('server', function(){
@@ -55,6 +56,8 @@ gulp.task('server', function(){
 	
 	gulp.watch(path.build.css + '/**/*.less', ['dev:css']);
 	gulp.watch(path.block.root + '/**/.less', ['dev:block:less']);
+	
+	gulp.watch(path.src.img + '/**/*', ['dev:img']);
 });
 
 
@@ -100,6 +103,12 @@ gulp.task('dev:block:less', function(){
 	;
 });
 
+gulp.task('dev:img', function() {
+	return gulp.src(path.src.img + '/**/*')
+		.pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))) //cache
+		.pipe(gulp.dest(path.build.img + '/tpl'))
+	;
+});
 
 
 
