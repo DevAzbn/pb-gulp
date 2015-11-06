@@ -26,9 +26,9 @@
     "gulp-less": "*",
     "gulp-minify-css": "*",
     "gulp-pagebuilder": "*",
+    "gulp-plumber": "*",
     "gulp-rename": "*",
     "gulp-uglify": "*",
-    "gulp-watch": "*",
-    "gulp-watch-less": "*",
+    "gulp-watch": "*"
   }
 }

@@ -5,7 +5,6 @@ var gulp = require('gulp'),
 		reload = browserSync.reload,
 	concat = require('gulp-concat'),					// склейка файлов
 	less = require('gulp-less'),						// LESS
-	//	watchLess = require('gulp-watch-less'),				
 	minifyCss = require('gulp-minify-css'),				// минификация css
 	//myth = require('gulp-myth'),						// префиксы для css - по умолчанию не установлен
 	rename = require('gulp-rename'),					// переименование файлов
@@ -13,6 +12,7 @@ var gulp = require('gulp'),
 	watch = require('gulp-watch'),						// наблюдение за изменением файловой системы
 	imagemin = require('gulp-imagemin'),				// сжатие изображений
 	cache = require('gulp-cache'),						// кеширование
+	plumber = require('gulp-plumber'),					// отлов ошибок
 	pagebuilder = require('gulp-pagebuilder');			// умный инклуд html с поддержкой вложенности и передачей параметров
 
 var root = 'rybka',//'site',
@@ -40,7 +40,7 @@ var path = {
 
 
 gulp.task('default', ['server', 'dev' ]);
-gulp.task('dev', ['dev:html', 'dev:js', 'dev:css', 'dev:img' ]);
+gulp.task('dev', ['dev:html', 'dev:js', 'dev:block:less', 'dev:css', 'dev:img' ]);
 gulp.task('production', ['production:html', 'production:js', 'production:css' ]);
 
 gulp.task('server', function(){
@@ -65,7 +65,7 @@ gulp.task('server', function(){
 
 gulp.task('dev:html', function(){
 	return gulp.src(path.src.html + '/**/*.html')
-		//.pipe(rigger())
+		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(gulp.dest(path.build.html))
 		.pipe(reload({stream : true,}))
@@ -74,7 +74,7 @@ gulp.task('dev:html', function(){
 
 gulp.task('dev:js', function(){
 	return gulp.src(path.src.js + '/**/*.js')
-		//.pipe(rigger())
+		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(gulp.dest(path.build.js))
 		.pipe(reload({stream : true,}))
@@ -83,6 +83,7 @@ gulp.task('dev:js', function(){
 
 gulp.task('dev:css', function(){
 	return gulp.src(path.build.css + '/site.less')
+		.pipe(plumber())
 		.pipe(less())
 		.pipe(autoprefixer({
 			browsers: ['> 2% in RU', 'last 4 version', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],	//last 2 versions '> 0%'
@@ -95,7 +96,7 @@ gulp.task('dev:css', function(){
 
 gulp.task('dev:block:less', function(){
 	return gulp.src(path.block.root + '/**/.less')
-		//.pipe(rigger())
+		.pipe(plumber())
 		//.pipe(pagebuilder(path.build.root))
 		.pipe(concat('gulp-block.less'))
 		.pipe(gulp.dest(path.build.css + '/site'))
@@ -105,6 +106,7 @@ gulp.task('dev:block:less', function(){
 
 gulp.task('dev:img', function() {
 	return gulp.src(path.src.img + '/**/*')
+		.pipe(plumber())
 		.pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))) //cache
 		.pipe(gulp.dest(path.build.img + '/tpl'))
 	;
@@ -115,7 +117,7 @@ gulp.task('dev:img', function() {
 
 gulp.task('production:html', function(){
 	return gulp.src(path.src.html + '/**/*.html')
-		//.pipe(rigger())
+		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(gulp.dest(path.build.html))
 	;
@@ -123,7 +125,7 @@ gulp.task('production:html', function(){
 
 gulp.task('production:js', function(){
 	return gulp.src(path.src.js + '/**/*.js')
-		//.pipe(rigger())
+		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(uglify())
 		.pipe(gulp.dest(path.build.js))
@@ -132,6 +134,7 @@ gulp.task('production:js', function(){
 
 gulp.task('production:css', function(){
 	return gulp.src(path.build.css + '/site.less')
+		.pipe(plumber())
 		.pipe(less())
 		.pipe(autoprefixer({
 			browsers: ['> 2% in RU', 'last 4 version', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],	//last 2 versions '> 0%'
