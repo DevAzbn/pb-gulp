@@ -81,7 +81,7 @@ section {
   color: #000000;
 }
 .fecss {
-  font-family: Arial, sans-serif, Georgia;
+  /*font-family:Arial, sans-serif, Georgia;*/
   position: relative;
   margin: 0px;
   padding: 0px;
@@ -808,6 +808,7 @@ section {
   -webkit-align-content: stretch;
       -ms-flex-line-pack: stretch;
           align-content: stretch;
+  width: 100%;
 }
 .fecss .grid.flex .grid-row.inline {
   -webkit-box-orient: horizontal;
@@ -858,6 +859,7 @@ section {
           justify-content: space-around;
 }
 .fecss .grid.flex .grid-row .f-box {
+  float: initial;
   -webkit-align-self: stretch;
       -ms-flex-item-align: stretch;
           align-self: stretch;
@@ -1295,7 +1297,6 @@ body {
 body {
   font-size: 10px;
 }
-/*gulp-block*/
 @-webkit-keyframes processloading {
   0% {
     width: 0%;

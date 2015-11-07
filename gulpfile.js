@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),					// отлов ошибок
 	pagebuilder = require('gulp-pagebuilder');			// умный инклуд html с поддержкой вложенности и передачей параметров
 
-var root = 'rybka',//'site',
+var root = 'site',//'site',
 	src = root + '/' + 'src';
 
 var path = {
@@ -32,6 +32,7 @@ var path = {
 		css : src + '/css',
 		js : src + '/js',
 		img : src + '/img',
+		_ : src + '/_',
 	},
 	block : {
 		root : root + '/src/block',
@@ -39,25 +40,55 @@ var path = {
 };
 
 
-gulp.task('default', ['server', 'dev' ]);
-gulp.task('dev', ['dev:html', 'dev:js', 'dev:block:less', 'dev:css', 'dev:img' ]);
-gulp.task('production', ['production:html', 'production:js', 'production:css' ]);
+gulp.task('default',
+[
+	'server',
+	'dev',
+]);
+gulp.task('dev',
+[
+	'dev:html',
+	'dev:document-ready:js',
+	'dev:window-resize:js',
+	'dev:window-scroll:js',
+	//'dev:js',
+	'dev:block:less',
+	'dev:css',
+	'dev:img',
+]);
+gulp.task('production',
+[
+	'production:html',
+	'production:js',
+	'production:css',
+]);
 
 gulp.task('server', function(){
 	browserSync.init({
 		server : path.build.root,
 	});
 	
-	gulp.watch(path.src.html + '/**/*.html', ['dev:html']);
-	gulp.watch(path.block.root + '/**/.html', ['dev:html']);
 	
+	gulp.watch(path.block.root + '/**/.html', ['dev:html']);
+	gulp.watch(path.src.html + '/**/*.html', ['dev:html']);
+	
+	
+	gulp.watch(path.block.root + '/**/.document-ready.js', ['dev:document-ready:js']);
+	gulp.watch(path.block.root + '/**/.window-resize.js', ['dev:window-resize:js']);
+	gulp.watch(path.block.root + '/**/.window-scroll.js', ['dev:window-scroll:js']);
+	gulp.watch(path.src._ + '/concat.document-ready.js', ['dev:js']);
+	gulp.watch(path.src._ + '/concat.window-resize.js', ['dev:js']);
+	gulp.watch(path.src._ + '/concat.window-scroll.js', ['dev:js']);
 	gulp.watch(path.src.js + '/**/*.js', ['dev:js']);
-	gulp.watch(path.block.root + '/**/.*.js', ['dev:js']);
+	
 	
 	gulp.watch(path.build.css + '/**/*.less', ['dev:css']);
 	gulp.watch(path.block.root + '/**/.less', ['dev:block:less']);
 	
+	
 	gulp.watch(path.src.img + '/**/*', ['dev:img']);
+	
+	
 });
 
 
@@ -72,6 +103,8 @@ gulp.task('dev:html', function(){
 	;
 });
 
+
+
 gulp.task('dev:js', function(){
 	return gulp.src(path.src.js + '/**/*.js')
 		.pipe(plumber())
@@ -80,6 +113,35 @@ gulp.task('dev:js', function(){
 		.pipe(reload({stream : true,}))
 	;
 });
+
+gulp.task('dev:document-ready:js', function(){
+	return gulp.src(path.block.root + '/**/.document-ready.js')
+		.pipe(plumber())
+		.pipe(pagebuilder(path.build.root))
+		.pipe(concat('concat.document-ready.js'))
+		.pipe(gulp.dest(path.src._))
+	;
+});
+
+gulp.task('dev:window-resize:js', function(){
+	return gulp.src(path.block.root + '/**/.window-resize.js')
+		.pipe(plumber())
+		.pipe(pagebuilder(path.build.root))
+		.pipe(concat('concat.window-resize.js'))
+		.pipe(gulp.dest(path.src._))
+	;
+});
+
+gulp.task('dev:window-scroll:js', function(){
+	return gulp.src(path.block.root + '/**/.window-scroll.js')
+		.pipe(plumber())
+		.pipe(pagebuilder(path.build.root))
+		.pipe(concat('concat.window-scroll.js'))
+		.pipe(gulp.dest(path.src._))
+	;
+});
+
+
 
 gulp.task('dev:css', function(){
 	return gulp.src(path.build.css + '/site.less')
