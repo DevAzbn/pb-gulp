@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),					// отлов ошибок
 	pagebuilder = require('gulp-pagebuilder');			// умный инклуд html с поддержкой вложенности и передачей параметров
 
-var root = 'pf',//'site',//'rybka',
+var root = 'rybka',//'site',//'rybka',
 	src = root + '/' + 'src';
 
 var path = {
@@ -76,9 +76,11 @@ gulp.task('server', function(){
 	gulp.watch(path.block.root + '/**/.document-ready.js', ['dev:document-ready:js']);
 	gulp.watch(path.block.root + '/**/.window-resize.js', ['dev:window-resize:js']);
 	gulp.watch(path.block.root + '/**/.window-scroll.js', ['dev:window-scroll:js']);
+	gulp.watch(path.block.root + '/**/body.changeClass.js', ['dev:body.changeClass:js']);
 	gulp.watch(path.src._ + '/concat.document-ready.js', ['dev:js']);
 	gulp.watch(path.src._ + '/concat.window-resize.js', ['dev:js']);
 	gulp.watch(path.src._ + '/concat.window-scroll.js', ['dev:js']);
+	gulp.watch(path.src._ + '/concat.body.changeClass.js', ['dev:js']);
 	gulp.watch(path.src.js + '/**/*.js', ['dev:js']);
 	
 	
@@ -137,6 +139,15 @@ gulp.task('dev:window-scroll:js', function(){
 		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
 		.pipe(concat('concat.window-scroll.js'))
+		.pipe(gulp.dest(path.src._))
+	;
+});
+
+gulp.task('dev:body.changeClass:js', function(){
+	return gulp.src(path.block.root + '/**/body.changeClass.js')
+		.pipe(plumber())
+		.pipe(pagebuilder(path.build.root))
+		.pipe(concat('concat.body.changeClass.js'))
 		.pipe(gulp.dest(path.src._))
 	;
 });
