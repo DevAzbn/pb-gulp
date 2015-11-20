@@ -59,4 +59,7 @@ $('body').on('changeClass',function(){
 });
 
 
+[snp tpl="src/_/concat.changeClass.js" ]
+
+
 });

@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),					// отлов ошибок
 	pagebuilder = require('gulp-pagebuilder');			// умный инклуд html с поддержкой вложенности и передачей параметров
 
-var root = 'rybka',//'site',//'rybka',
+var root = 'site',//'site',//'rybka',
 	src = root + '/' + 'src';
 
 var path = {
@@ -70,6 +70,7 @@ gulp.task('server', function(){
 	
 	
 	gulp.watch(path.block.root + '/**/.html', ['dev:html']);
+	gulp.watch(path.block.root + '/**/*.html', ['dev:html']);
 	gulp.watch(path.src.html + '/**/*.html', ['dev:html']);
 	
 	
@@ -77,10 +78,12 @@ gulp.task('server', function(){
 	gulp.watch(path.block.root + '/**/.window-resize.js', ['dev:window-resize:js']);
 	gulp.watch(path.block.root + '/**/.window-scroll.js', ['dev:window-scroll:js']);
 	gulp.watch(path.block.root + '/**/body.changeClass.js', ['dev:body.changeClass:js']);
+	gulp.watch(path.block.root + '/**/.changeClass.js', ['dev:changeClass:js']);
 	gulp.watch(path.src._ + '/concat.document-ready.js', ['dev:js']);
 	gulp.watch(path.src._ + '/concat.window-resize.js', ['dev:js']);
 	gulp.watch(path.src._ + '/concat.window-scroll.js', ['dev:js']);
 	gulp.watch(path.src._ + '/concat.body.changeClass.js', ['dev:js']);
+	gulp.watch(path.src._ + '/concat.changeClass.js', ['dev:js']);
 	gulp.watch(path.src.js + '/**/*.js', ['dev:js']);
 	
 	
@@ -111,6 +114,7 @@ gulp.task('dev:js', function(){
 	return gulp.src(path.src.js + '/**/*.js')
 		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
+		.pipe(uglify())
 		.pipe(gulp.dest(path.build.js))
 		.pipe(reload({stream : true,}))
 	;
@@ -120,6 +124,7 @@ gulp.task('dev:document-ready:js', function(){
 	return gulp.src(path.block.root + '/**/.document-ready.js')
 		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
+		.pipe(uglify())
 		.pipe(concat('concat.document-ready.js'))
 		.pipe(gulp.dest(path.src._))
 	;
@@ -129,6 +134,7 @@ gulp.task('dev:window-resize:js', function(){
 	return gulp.src(path.block.root + '/**/.window-resize.js')
 		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
+		.pipe(uglify())
 		.pipe(concat('concat.window-resize.js'))
 		.pipe(gulp.dest(path.src._))
 	;
@@ -138,6 +144,7 @@ gulp.task('dev:window-scroll:js', function(){
 	return gulp.src(path.block.root + '/**/.window-scroll.js')
 		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
+		.pipe(uglify())
 		.pipe(concat('concat.window-scroll.js'))
 		.pipe(gulp.dest(path.src._))
 	;
@@ -147,7 +154,18 @@ gulp.task('dev:body.changeClass:js', function(){
 	return gulp.src(path.block.root + '/**/body.changeClass.js')
 		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
+		.pipe(uglify())
 		.pipe(concat('concat.body.changeClass.js'))
+		.pipe(gulp.dest(path.src._))
+	;
+});
+
+gulp.task('dev:changeClass:js', function(){
+	return gulp.src(path.block.root + '/**/.changeClass.js')
+		.pipe(plumber())
+		.pipe(pagebuilder(path.build.root))
+		.pipe(uglify())
+		.pipe(concat('concat.changeClass.js'))
 		.pipe(gulp.dest(path.src._))
 	;
 });
@@ -162,6 +180,7 @@ gulp.task('dev:css', function(){
 			browsers: ['> 2% in RU', 'last 4 version', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],	//last 2 versions '> 0%'
 			cascade: true,
 		}))
+		.pipe(minifyCss())
 		.pipe(gulp.dest(path.build.css))
 		.pipe(reload({stream : true,}))
 	;

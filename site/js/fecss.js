@@ -263,7 +263,7 @@ $(document).ready(function() {
 			
 		}
 		
-		console.log(event.which);
+		//console.log(event.which);
 		/*
 		R	82
 		Q	81
