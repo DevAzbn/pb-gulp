@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),					// отлов ошибок
 	pagebuilder = require('gulp-pagebuilder');			// умный инклуд html с поддержкой вложенности и передачей параметров
 
-var root = 'site',//'site',//'rybka',
+var root = 'rybka',//'site',//'rybka',
 	src = root + '/' + 'src';
 
 var path = {
@@ -51,7 +51,7 @@ gulp.task('dev',
 	'dev:document-ready:js',
 	'dev:window-resize:js',
 	'dev:window-scroll:js',
-	//'dev:js',
+	'dev:js',
 	'dev:block:less',
 	'dev:css',
 	'dev:img',
@@ -114,7 +114,7 @@ gulp.task('dev:js', function(){
 	return gulp.src(path.src.js + '/**/*.js')
 		.pipe(plumber())
 		.pipe(pagebuilder(path.build.root))
-		.pipe(uglify())
+		//.pipe(uglify())
 		.pipe(gulp.dest(path.build.js))
 		.pipe(reload({stream : true,}))
 	;
