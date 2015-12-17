@@ -202,7 +202,7 @@ gulp.task('dev:img', function() {
 	return gulp.src(path.src.img + '/**/*')
 		.pipe(plumber())
 		.pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))) //cache
-		.pipe(gulp.dest(path.build.img + '/tpl'))
+		.pipe(gulp.dest(path.build.img))
 	;
 });
 
