@@ -1,0 +1,71 @@
+.footer-block__contacts{
+	background: lighten(@black, 43.5%); // #6f6f6f
+	font-size: 12px;
+	color: darken(@white, 20%);
+	padding: 22px 35px;
+	a{
+		color: darken(@white, 20%);
+		&[href^='tel:']{
+			text-decoration: none;
+		}
+		&[href^='mailto:']{
+			text-decoration: underline;
+		}
+	}
+}
+.contacts-block__item{
+	display: inline-block;
+	font-size: 13px;
+	margin-right: 15px;
+	&:before{
+		content: '';
+		font-family: @icon-custom;
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		vertical-align: middle;
+		//background: url('/img/tpl/contact-icon.png') no-repeat ;
+		font-size: 20px;
+		line-height: 20px;
+		margin-right: 10px;
+	}
+	&.item__address:before{
+		//background-position: 0px 0px;
+		content: @icon-envelope; 
+	}
+	&.item__phone:before{
+		//background-position: -27px 0px; 
+		content: @icon-phone;
+	}
+	&.item__email:before{
+		//background-position: -54px 0px; 
+		content: @icon-sign;
+	}
+}
+.contacts-block__copyright{
+	text-align: right;	
+}
+.footer-block__navbar{
+	background: lighten(@black, 33.5%); // #555555
+	font-size: 12px;
+	color: darken(@white, 40%);
+	padding: 15px 32px 15px 15px;
+	a{
+		color: darken(@white, 40%);
+		text-decoration: underline;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+}
+.navbar-footer__list{
+	li{
+		a{
+			font-size: 13px;
+			padding: 0 19px;
+		}
+	}
+}
+.dorohovdesign{
+	text-align: right;
+}

@@ -1,0 +1,61 @@
+.about-page__heading{
+	text-align: center;		
+	.mixin-headings(
+		@font-family: @bandera, 
+		@font-size: 37px, 
+		@line-height: 40px, 
+		@color: inherit
+	);
+	margin-bottom: 25px;
+}
+.about-page__carousel{
+	margin-bottom: 35px;
+}
+.about-page__carousel-inner{	
+    max-width: 925px;
+    margin: 0 auto;
+}
+.about-carousel__item{
+	.flex-display(@display: flex);
+	.align-self(@align: center);	
+}
+.about-carousel__preview{
+	width: 46.6%;
+	.align-self(@align: center);
+}
+.about-carousel__caption{
+	width: 53.4%;
+	color: darken(@white, 60%);
+	font-size: 13px;
+	line-height: 22px;
+	.align-self(@align: center);	
+}
+.about-carousel__control{
+	&:before{
+		font-family: @icon-custom;
+		position: absolute;
+		top: 50%;
+		color: darken(@white, 20%);
+		.rotation-translate(@deg:0deg, @x:0px, @y:-50%);
+		font-size: 35px;
+		line-height: 35px;
+	}
+	&.left:before{
+		content: @icon-left;
+		left: 0;
+	}
+	&.right:before{
+		content: @icon-right;
+		right: 0;
+	}
+}
+.about-page__advantage-block{margin-bottom: 25px;}
+.about-page__advantage-block-heading{
+	border-color: darken(@white, 80%);
+}
+.about-page__advantage-heading{
+	margin-bottom: 8px;
+}
+.about-page__advantage-block__item{
+	min-height: 55px;
+}

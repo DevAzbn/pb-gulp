@@ -1,0 +1,55 @@
+.map-block__main{
+	margin-bottom: 30px;
+	min-height: 570px;	
+}
+.map-block__map-svg{
+	padding-left: 33px; 
+}
+.map-block__map-note{
+	width: 330px; 
+}
+.map-block__block-heading{
+	margin-bottom: 2px;
+}
+.map-block__heading{
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.map-block__table{
+	width: 100%;
+	margin-bottom: 70px;
+	th{
+		width: 72%;
+		padding: 5px 0; 
+	}
+}
+.region-item{
+	text{
+		font-family: @f-open-sans;
+		fill: #7F7E7C;
+		font-weight: 600;
+		font-size: 13px;
+		tspan{
+			font-family: @f-open-sans;
+			fill: #7F7E7C;
+			font-weight: 600;
+			font-size: 13px;
+
+		}
+	}
+	path{
+		fill: #E2E1E2;
+	}
+	&:hover{
+		cursor: pointer;
+		path{
+			fill: #39B54A;
+		}
+		path + text{
+			fill: @white;
+			tspan{
+				fill: @white;
+			}
+		}
+	}
+}
