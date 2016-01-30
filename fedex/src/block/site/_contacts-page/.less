@@ -1,0 +1,31 @@
+.contacts-block__page{
+	//opacity: @opacity;
+	margin-bottom: 40px;    
+	min-height: 429px;
+}
+.contacts-page__heading	{	
+	.mixin-headings(
+		@font-family: @bandera, 
+		@font-size: 31px, 
+		@line-height: 36px, 
+		@color: lighten(@black, 28%)
+	);//#474747
+	margin-bottom: 60px;
+}
+.contacts-page__table{
+	width: 100%;
+	margin-bottom: 20px;
+	color: darken(@white, 60%); 
+	a{
+		color: darken(@white, 60%); 
+	}
+	td, th{
+		padding: 7px 0;
+	}
+	th{
+		width: 31%;
+	}
+	td{
+		padding: 7px;
+	}
+}

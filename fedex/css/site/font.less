@@ -1,0 +1,54 @@
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,400italic&subset=cyrillic,latin);
+	@f-open-sans: 'Open Sans', sans-serif;
+	@bandera-bold: BanderaProBold;
+	@bandera: BanderaProHeavy;
+	@icon-custom: advantage;
+	.include-custom-font(@family: @bandera, @weight: normal, @style: normal){
+		@font-face{			
+			font-family: "@{family}";			
+			src:url('./../fonts/@{family}.eot');
+			src:url('./../fonts/@{family}.eot?#iefix') format('embedded-opentype'),
+				url('./../fonts/@{family}.woff2') format('woff2'),
+				url('./../fonts/@{family}.woff') format('woff'),
+				url('./../fonts/@{family}.ttf') format('truetype'),
+				url('./../fonts/@{family}.svg#icon') format('svg');
+			font-weight: @weight;
+			font-style: @style;		
+		}
+	}	
+	.include-custom-font(@family: @bandera-bold, @weight: normal, @style: normal);
+	.include-custom-font(@family: @bandera, @weight: normal, @style: normal);
+	.include-custom-font(@family: @icon-custom, @weight: normal, @style: normal);
+	.mixin-headings(@font-family: @f-open-sans, @font-size: 20px, @line-height: 26px, @color: @black){
+		font-family: @font-family;
+		font-size: @font-size;
+		line-height: @line-height;
+		color: @color;
+	}
+	@icon-architecture: "\e000"; 
+	@icon-coin: 		"\e001"; 
+	@icon-cross: 		"\e002"; 
+	@icon-diplom: 		"\e003"; 
+	@icon-right: 		"\e004"; 
+	@icon-left: 		"\e005"; 
+	@icon-earth: 		"\e006"; 
+	@icon-email: 		"\e007"; 
+	@icon-envelope: 	"\e008"; 
+	@icon-facebook: 	"\e009"; 
+	@icon-flag: 		"\e00a"; 
+	@icon-garden: 		"\e00b"; 
+	@icon-instagram: 	"\e00c"; 
+	@icon-locations: 	"\e00d";
+	@icon-location: 	"\e00e";
+	@icon-maleuser: 	"\e00f";
+	@icon-marketing: 	"\e010"; 
+	@icon-phone: 		"\e011";	 
+	@icon-point: 		"\e012"; 
+	@icon-rural: 		"\e013"; 
+	@icon-sign: 		"\e014";
+	@icon-star: 		"\e015"; 
+	@icon-talk: 		"\e016"; 
+	@icon-thumb: 		"\e017";  
+	@icon-twitter: 		"\e018";  
+	@icon-user: 		"\e019";  
+	@icon-vk: 			"\e01a";  

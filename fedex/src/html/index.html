@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ru-RU"> 
+	<head>
+	[snp tpl="src/block/site/page/head/.html" ]
+	</head>
+	<body>
+		<div class="container">
+			[snp tpl="src/block/site/_header-site/.html" class="" ]			
+			[snp tpl="src/block/site/_navbar-site/.html" class="navbar-block__top" ] 			
+			[snp tpl="src/block/site/_news-main/.html" class="news-block__main" ]
+			<div class="map-block__main">
+				<div class="row">
+					<div class="col-md-7">
+						[snp tpl="src/block/site/_map-svg-main/.html" class="map-block__map-svg" ]		
+					</div>
+					<div class="col-md-5">
+					[snp tpl="src/block/site/_map-main/.html" class="map-block__map-note" ]	
+					</div>
+				</div>
+			</div>	
+			[snp tpl="src/block/site/_partner-site/.html" class="partner-block__site" ]			
+			[snp tpl="src/block/site/_footer-site/.html" class="footer-block__site" ]			
+		</div>
+	</body>
+</html>
